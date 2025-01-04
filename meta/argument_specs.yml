@@ -5,13 +5,42 @@ argument_specs:
     short_description: Main entry point for the kavita role
     description:
       - This is the main entry point for the kavita role.
-      - A role to deploy Kavita using rootless Podman with systemd
+      - A role to deploy kavita using rootless Podman with systemd
     author:
       - SpeakinTelnet
     options:
-      published_port:
+      kavita_config_path:
+        type: str
+        required: false
+        default: ~/.config/kavita/
+        description:
+          - The path to the kavita configuration directory
+      kavita_data_path:
+        type: str
+        required: false
+        default: ~/.local/share/containers/storage/media
+        description:
+          - The path to the kavita data directory
+          - It is recommended to share the same data directory with other media managing services
+      kavita_timezone:
+        type: str
+        required: false
+        default: Etc/UTC
+        description:
+          - The timezone for the kavita service
+      kavita_version:
+        type: str
+        required: false
+        default: latest
+        description:
+          - The version of kavita Container
+        choices:
+          - latest
+          - nightly
+          - canary
+      kavita_web_port:
         type: int
         required: false
-        default: 8080
+        default: 5000
         description:
-          - The default port for the web server.
+          - The port for the web server

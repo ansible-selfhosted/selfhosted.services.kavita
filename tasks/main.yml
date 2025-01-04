@@ -6,17 +6,31 @@
     state: present
   register: user_info
 
+- name: Normalize default paths
+  ansible.builtin.set_fact:
+    kavita_config_path: "{{ kavita_config_path | replace('~', user_info.home) }}"
+    kavita_data_path: "{{ kavita_data_path | replace('~', user_info.home) }}"
+
+- name: Create directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0750"
+  loop:
+    - "{{ kavita_config_path }}"
+    - "{{ kavita_data_path }}"
+
 - name: Put container related files on the host
   ansible.builtin.template:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     mode: "0640"
   loop:
-    - { src: httpd.container.j2, dest: "{{ user_info.home }}/.config/containers/systemd/httpd.container" }
+    - { src: kavita.container.j2, dest: "{{ user_info.home }}/.config/containers/systemd/kavita.container" }
 
 - name: Start the container service
   ansible.builtin.systemd:
-    name: httpd
+    name: kavita
     state: started
     scope: user
     enabled: true

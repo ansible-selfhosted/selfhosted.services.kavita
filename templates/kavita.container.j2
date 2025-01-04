@@ -1,0 +1,17 @@
+[Unit]
+Description=A digital library which supports a vast array of file formats.
+
+[Container]
+AutoUpdate=registry
+ContainerName=kavita
+Environment=TZ={{ kavita_timezone }}
+Image=ghcr.io/kareadita/kavita:{{ kavita_version }}
+PublishPort={{ kavita_web_port }}:5000
+Volume={{ kavita_config_path }}:/kavita/config:Z
+Volume={{ kavita_data_path }}:/data:z
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=multi-user.target default.target
