@@ -1,0 +1,14 @@
+# Changes here will be overwritten by Copier
+_commit: 0.3.1
+_src_path: gh:ansible-selfhosted/selfhosted-role-template
+author_company: '""'
+author_email: git@speakintel.net
+author_name: SpeakinTelnet
+collection_name: services
+copyright_holder: SpeakinTelnet
+license: MIT
+related_url: https://wiki.kavitareader.com/
+repository_host: github.com
+repository_url: https://github.com/ansible-selfhosted/selfhosted.services.kavita
+role_name: kavita
+short_description: A role to deploy Kavita using rootless Podman with systemd

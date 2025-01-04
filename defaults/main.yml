@@ -1,0 +1,4 @@
+---
+# defaults file for services.kavita
+
+published_port: 8080
