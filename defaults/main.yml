@@ -1,5 +1,8 @@
 ---
+kavita_additional_options: []
+kavita_config_label: ''
 kavita_config_path: ~/.config/kavita/
+kavita_data_label: ''
 kavita_data_path: ~/.local/share/containers/storage/media
 kavita_timezone: Etc/UTC
 kavita_version: latest

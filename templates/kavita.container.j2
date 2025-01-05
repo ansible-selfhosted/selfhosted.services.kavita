@@ -7,8 +7,13 @@ ContainerName=kavita
 Environment=TZ={{ kavita_timezone }}
 Image=ghcr.io/kareadita/kavita:{{ kavita_version }}
 PublishPort={{ kavita_web_port }}:5000
-Volume={{ kavita_config_path }}:/kavita/config:Z
-Volume={{ kavita_data_path }}:/data:z
+Volume={{ kavita_config_path }}:/kavita/config{% if kavita_config_label|length > 0 %}:{{ kavita_config_label }}{% endif %}
+
+Volume={{ kavita_data_path }}:/data{% if kavita_data_label|length > 0 %}:{{ kavita_data_label }}{% endif %}
+
+{% for kavita_var in kavita_additional_options %}
+{{ kavita_var }}
+{% endfor %}
 
 [Service]
 Restart=always

@@ -9,12 +9,34 @@ argument_specs:
     author:
       - SpeakinTelnet
     options:
+      kavita_additional_options:
+        type: list
+        required: false
+        default: []
+        description:
+          - List of additional key=value for the quadlet container
+          - 'ex: - "Network=custom.network"'
+          - Can also be used to leave comments by preceding with a '#'
+      kavita_config_label:
+        type: str
+        required: false
+        default: ""
+        description:
+          - The labels for to the kavita config directory
+          - "Comma separated values (ex: rw,Z)"
       kavita_config_path:
         type: str
         required: false
         default: ~/.config/kavita/
         description:
           - The path to the kavita configuration directory
+      kavita_data_label:
+        type: str
+        required: false
+        default: ""
+        description:
+          - The labels for to the kavita data directory
+          - "Comma separated values (ex: rw,Z)"
       kavita_data_path:
         type: str
         required: false
